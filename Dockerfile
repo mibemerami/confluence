@@ -14,14 +14,14 @@ ADD 	docker-scripts/ /root/docker-scripts/
 	# General preparation
 RUN 	yum update && \
  	adduser confluenceuser && \ 
-	# Get the Jira binary
+	# Get the Confluence binary
  	yum install -y wget && \
  	cd /root/install-confluence && \
 	wget "https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin" && \
-	# Install Jira
+	# Install Confluence
 	chmod 755 atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin && \
 	./atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin -q -varfile response.varfile && \
-	# Give rights
+	# Do configuration
  	chmod 777 /root/docker-scripts/docker-entrypoint.sh && \
 	chown -R confluence:confluence $CONFLUENCE_INSTALL && \
 	chown -R confluence:confluence $CONFLUENCE_HOME && \
