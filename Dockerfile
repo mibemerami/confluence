@@ -31,7 +31,7 @@ RUN 	yum update && \
  	yum clean all 
 
 # Do configuration
-VOLUME 	[$CONFLUENCE_INSTALL, $CONFLUENCE_HOME]
+VOLUME 	["$CONFLUENCE_INSTALL", "$CONFLUENCE_HOME"]
 EXPOSE 	8090
 ENTRYPOINT ["/root/docker-scripts/docker-entrypoint.sh"]
 CMD	["/bin/bash"]
