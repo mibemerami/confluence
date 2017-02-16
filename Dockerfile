@@ -12,7 +12,7 @@ ADD 	docker-scripts/ /root/docker-scripts/
 
 # Run commands
 	# General preparation
-RUN 	yum update && \
+RUN 	yum update -y && \
  	adduser confluenceuser && \ 
 	# Get the Confluence binary
  	yum install -y wget && \
