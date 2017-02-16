@@ -28,7 +28,7 @@ RUN 	yum update && \
 	# Do some clean up
 	cd /root && \
  	rm -rf /root/install-confluence && \
- 	yum clean all 
+ 	yum clean all -y
 
 # Do configuration
 VOLUME 	["$CONFLUENCE_INSTALL", "$CONFLUENCE_HOME"]
