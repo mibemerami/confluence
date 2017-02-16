@@ -3,8 +3,8 @@ FROM centos:7.3.1611
 
 # Configuration variables
 ENV CONFLUENCE_VERSION	5.10.8
-ENV CONFLUENCE_INSTALL	/opt/atlassian/confluence/
-ENV CONFLUENCE_HOME  	/var/atlassian/application-data/confluence/
+ENV CONFLUENCE_INSTALL	/opt/atlassian/
+ENV CONFLUENCE_HOME  	/var/atlassian/application-data/
 
 # Add necessary files
 ADD 	install-confluence/ /root/install-confluence/
