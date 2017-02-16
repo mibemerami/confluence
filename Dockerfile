@@ -1,5 +1,5 @@
 # Basic image
-FROM centos
+FROM centos:7.3.1611
 
 # Configuration variables
 ENV CONFLUENCE_VERSION	5.10.8
