@@ -32,7 +32,7 @@ RUN 	yum update -y && \
 
 # Do configuration
 VOLUME 	["$CONFLUENCE_INSTALL", "$CONFLUENCE_HOME"]
-EXPOSE 	8090
+EXPOSE 	8090 8091
 ENTRYPOINT ["/root/docker-scripts/docker-entrypoint.sh"]
 CMD	["/bin/bash"]
 
