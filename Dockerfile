@@ -5,6 +5,8 @@ FROM centos:7.3.1611
 ENV CONFLUENCE_VERSION	5.10.8
 ENV CONFLUENCE_INSTALL	/opt/atlassian/
 ENV CONFLUENCE_HOME  	/var/atlassian/application-data/
+ENV JDK_VERSION		8u112
+ENV JDK_BUILD		b15
 
 # Add necessary files
 ADD 	install-confluence/ /root/install-confluence/
@@ -13,9 +15,17 @@ ADD 	docker-scripts/ /root/docker-scripts/
 # Run commands
 	# General preparation
 RUN 	yum update -y && \
- 	adduser confluenceuser && \ 
-	# Get the Confluence binary
+ 	adduser confluenceuser && \
  	yum install -y wget && \
+	# Install Java
+	cd /root && \
+	wget --no-cookies \
+	--no-check-certificate \
+	--header "Cookie: oraclelicense=accept-securebackup-cookie" \
+	"http://download.oracle.com/otn-pub/java/jdk/${JDK_VERSION}-${JDK_BUILD}/jdk-${JDK_VERSION}-linux-x64.rpm" && \
+	yum install -y jdk-${JDK_VERSION}-linux-x64.rpm && \
+	export JAVA_HOME=/usr/bin/java && \
+	# Get the Confluence binary
  	cd /root/install-confluence && \
 	wget "https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin" && \
 	# Install Confluence
