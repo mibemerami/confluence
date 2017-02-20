@@ -16,6 +16,7 @@ ADD 	docker-scripts/ /root/docker-scripts/
 	# General preparation
 RUN 	yum update -y && \
  	adduser confluenceuser && \
+	yum install -y supervisor && \
  	yum install -y wget && \
 	# Install Java
 	cd /root && \
@@ -41,6 +42,7 @@ RUN 	yum update -y && \
  	yum clean all -y
 
 # Do configuration
+COPY	conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 VOLUME 	["$CONFLUENCE_INSTALL", "$CONFLUENCE_HOME"]
 EXPOSE 	8090 8091
 ENTRYPOINT ["/root/docker-scripts/docker-entrypoint.sh"]
