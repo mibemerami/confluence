@@ -16,7 +16,8 @@ ADD 	docker-scripts/ /root/docker-scripts/
 	# General preparation
 RUN 	yum update -y && \
  	adduser confluenceuser && \
-	yum install -y supervisor && \
+	yum install -y python-setuptools && \
+	easy_install supervisor && \
  	yum install -y wget && \
 	# Install Java
 	cd /root && \

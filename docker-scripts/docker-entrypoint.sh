@@ -36,6 +36,7 @@ echo "start script to patch setenv.sh"
 $to_run
 
 ########## Start actual process ######################################
-echo "start confluence"
-exec /opt/atlassian/confluence/bin/start-confluence.sh -fg confluenceuser
-
+#echo "start confluence"
+#exec /opt/atlassian/confluence/bin/start-confluence.sh -fg confluenceuser
+#start the supervisor deamon to let it start confluence
+exec /usr/bin/supervisord
