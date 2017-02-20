@@ -43,7 +43,7 @@ RUN 	yum update -y && \
  	yum clean all -y
 
 # Do configuration
-COPY	conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY	conf.d/supervisord.conf /etc/supervisord.conf
 VOLUME 	["$CONFLUENCE_INSTALL", "$CONFLUENCE_HOME"]
 EXPOSE 	8090 8091
 ENTRYPOINT ["/root/docker-scripts/docker-entrypoint.sh"]
